@@ -7,19 +7,27 @@ const Login = () => {
   const [form, setForm] = useState({ email: "", password: "" });
   const [message, setMessage] = useState(null);
   const [isError, setIsError] = useState(false);
+  const [validationError, setValidationError] = useState(""); // For form validation error
   const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     setMessage(null);
     setIsError(false);
+    setValidationError(""); // Clear previous validation error
+
+    // Basic form validation
+    if (!form.email || !form.password) {
+      setValidationError("Email and Password fields cannot be empty.");
+      return;
+    }
 
     try {
       const { data } = await API.post("/login", form);
       localStorage.setItem("token", data.token);
       setMessage("Login successful!");
       setIsError(false);
-      setTimeout(() => navigate("/products"), 1500);
+      setTimeout(() => navigate("/DoctorDashboard"), 1500);
     } catch (err) {
       if (err.response && err.response.data.message) {
         setMessage(err.response.data.message);
@@ -56,7 +64,7 @@ const Login = () => {
           Welcome Back
         </Typography>
         <Typography variant="body1" gutterBottom>
-          Sign in to access your  dashboard.
+          Sign in to access your dashboard.
         </Typography>
         <form onSubmit={handleSubmit}>
           <TextField
@@ -66,6 +74,8 @@ const Login = () => {
             margin="normal"
             value={form.email}
             onChange={(e) => setForm({ ...form, email: e.target.value })}
+            error={!form.email && validationError !== ""}
+            helperText={!form.email && validationError !== "" ? "Email is required." : ""}
           />
           <TextField
             label="Password"
@@ -74,11 +84,18 @@ const Login = () => {
             margin="normal"
             value={form.password}
             onChange={(e) => setForm({ ...form, password: e.target.value })}
+            error={!form.password && validationError !== ""}
+            helperText={!form.password && validationError !== "" ? "Password is required." : ""}
           />
           <Button type="submit" variant="contained" fullWidth sx={{ mt: 2 }}>
             Sign In
           </Button>
         </form>
+        {validationError && (
+          <Alert severity="error" sx={{ mt: 2 }}>
+            {validationError}
+          </Alert>
+        )}
         {message && (
           <Alert severity={isError ? "error" : "success"} sx={{ mt: 2 }}>
             {message}

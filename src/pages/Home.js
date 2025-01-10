@@ -54,47 +54,70 @@ const Home = () => {
 
       {/* Navigation Bar */}
       <AppBar position="sticky" sx={{ backgroundColor: "#1976d2" }}>
-        <Toolbar sx={{ justifyContent: "center" }}>
-          <Link
-            href="/"
-            underline="none"
-            color="inherit"
-            sx={{ margin: "0 20px", cursor: "pointer", fontSize: "16px" }}
-          >
-            Home
-          </Link>
-          <Link
-            href="/health-topics"
-            underline="none"
-            color="inherit"
-            sx={{ margin: "0 20px", cursor: "pointer", fontSize: "16px" }}
-          >
-            Health Topics
-          </Link>
-          <Link
-            href="/resources"
-            underline="none"
-            color="inherit"
-            sx={{ margin: "0 20px", cursor: "pointer", fontSize: "16px" }}
-          >
-            Resources
-          </Link>
-          <Link
-            href="/about-us"
-            underline="none"
-            color="inherit"
-            sx={{ margin: "0 20px", cursor: "pointer", fontSize: "16px" }}
-          >
-            About Us
-          </Link>
-          <Link
-            href="/contact-us"
-            underline="none"
-            color="inherit"
-            sx={{ margin: "0 20px", cursor: "pointer", fontSize: "16px" }}
-          >
-            Contact Us
-          </Link>
+        <Toolbar sx={{ justifyContent: "space-between" }}>
+          {/* Navigation Links */}
+          <Box sx={{ display: "flex", alignItems: "center" }}>
+            <Link
+              href="/"
+              underline="none"
+              color="inherit"
+              sx={{ margin: "0 20px", cursor: "pointer", fontSize: "16px" }}
+            >
+              Home
+            </Link>
+            <Link
+              href="/health-topics"
+              underline="none"
+              color="inherit"
+              sx={{ margin: "0 20px", cursor: "pointer", fontSize: "16px" }}
+            >
+              Health Topics
+            </Link>
+            <Link
+              href="/resources"
+              underline="none"
+              color="inherit"
+              sx={{ margin: "0 20px", cursor: "pointer", fontSize: "16px" }}
+            >
+              Resources
+            </Link>
+            <Link
+              href="/about-us"
+              underline="none"
+              color="inherit"
+              sx={{ margin: "0 20px", cursor: "pointer", fontSize: "16px" }}
+            >
+              About Us
+            </Link>
+            <Link
+              href="/contact-us"
+              underline="none"
+              color="inherit"
+              sx={{ margin: "0 20px", cursor: "pointer", fontSize: "16px" }}
+            >
+              Contact Us
+            </Link>
+          </Box>
+
+          {/* Login/Register Links */}
+          <Box sx={{ display: "flex", alignItems: "center" }}>
+            <Link
+              href="/login"
+              underline="none"
+              color="inherit"
+              sx={{ margin: "0 10px", cursor: "pointer", fontSize: "16px" }}
+            >
+              Login
+            </Link>
+            <Link
+              href="/register"
+              underline="none"
+              color="inherit"
+              sx={{ margin: "0 10px", cursor: "pointer", fontSize: "16px" }}
+            >
+              Register
+            </Link>
+          </Box>
         </Toolbar>
       </AppBar>
 
