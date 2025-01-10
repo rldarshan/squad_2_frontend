@@ -103,7 +103,7 @@ const Login = () => {
         )}
         <Typography variant="body2" sx={{ mt: 2 }}>
           Don't have an account?{" "}
-          <Button variant="text" onClick={() => navigate("/signup")}>
+          <Button variant="text" onClick={() => navigate("/register")}>
             Register
           </Button>
         </Typography>
